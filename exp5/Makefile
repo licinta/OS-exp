@@ -7,10 +7,12 @@ Mem-Pages:Mem-Pages.cpp
 
 
 run:
-	make 
-	pyinstaller -F -w PyPlot.py 
-	mv dist/PyPlot	.
-	rm -rf build dist *.spec 
+	make
+	if [ ! -e 'PyPlot' ] ; then \
+	pyinstaller -F -w PyPlot.py ;\
+	mv dist/PyPlot	. ;\
+	rm -rf build dist *.spec ;\
+	fi	
 	./Mem-Pages | ./PyPlot
 
 clean:
