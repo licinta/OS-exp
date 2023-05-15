@@ -1,19 +1,10 @@
-GG=g++ -std=c++14
+all:algo
 
-all=Mem-Pages 
-
-Mem-Pages:Mem-Pages.cpp
-	$(GG) Mem-Pages.cpp -o Mem-Pages
-
-
+algo:algo.cpp
+	g++ algo.cpp -o algo -std=c++17
+	
 run:
-	make
-	if [ ! -e 'PyPlot' ] ; then \
-	pyinstaller -F -w PyPlot.py ;\
-	mv dist/PyPlot	. ;\
-	rm -rf build dist *.spec ;\
-	fi	
-	./Mem-Pages | ./PyPlot
-
+	make && ./algo
 clean:
-	rm End.gif PyPlot Mem-Pages
+	rm algo
+

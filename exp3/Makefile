@@ -1,16 +1,24 @@
-# silent
-MAKEFLAGS += -s
+all:msg-pipe demo-pipe msg-buffline-server msg-buffline-client msg-shm
+exec=msg-pipe demo-pipe msg-buffline-server msg-buffline-client msg-shm
 
-all:pid_fork pid_sleep pid_pthread puts
-exec=pid_fork pid_sleep pid_pthread puts
 
-pid_fork:pid_fork.c
-	gcc pid_fork.c -o pid_fork
-pid_sleep:pid_sleep.c
-	gcc pid_sleep.c -o pid_sleep
-pid_pthread:pid_pthread.c
-	gcc pid_pthread.c -o pid_pthread 
-puts:puts.c
-	gcc puts.c -o puts
 clean:
-	rm -f  $(exec)
+	rm -rf $(exec)
+
+
+msg-pipe:msg-pipe.c
+	gcc msg-pipe.c -o msg-pipe
+
+demo-pipe:demo-pipe.c
+	gcc demo-pipe.c -o demo-pipe
+
+msg-buffline-server:
+	gcc msg-buffline-server.c -o msg-buffline-server
+
+msg-buffline-client:
+	gcc msg-buffline-client.c -o msg-buffline-client
+
+msg-shm:
+	gcc msg-shm.c -o msg-shm
+
+

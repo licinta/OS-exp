@@ -4,8 +4,6 @@
 #include <cstring>
 #include <deque>
 #include <iostream>
-#define ACTIVE 1
-#define UNACTIVE 0
 #define N 5
 #define time int
 using namespace std;
@@ -164,6 +162,8 @@ void Summary()
 }
 int main()
 {
+    init();
+    prt();
     printf("*************************************************\n");
     FCFS();
     printf("\n");

@@ -13,17 +13,16 @@ int main(int argc,char **args){
     int p1,p2;
     p1=fork();
     p2=fork();
-    say("a",t);
-    if (p1==0){
+    if (p1!=0 &&p2!=0)
+        say("a",t);
+    if (p1==0&&p2!=0){
         say("b", t);
     }else{
     }
-    if (p2==0){
+    if (p2==0&&p1!=0){
         say("c", t);
     }else{
     }
-
-    sleep(1);
     return 0;
 }
 
