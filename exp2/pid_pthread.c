@@ -6,7 +6,7 @@ int myglobal;
 pthread_mutex_t mytmutex=PTHREAD_MUTEX_INITIALIZER;
 void *thread_function(void *args){
     int i,j;
-    for (int i=0;i<100000000;++i){
+    for (int i=0;i<1000000;++i){
         pthread_mutex_lock(&mytmutex);
         j=myglobal;
         j++;
@@ -31,7 +31,7 @@ int main(){
         printf("error create");
         abort();
     }
-    for(int i=0;i<100000000;++i){
+    for(int i=0;i<1000000;++i){
         pthread_mutex_lock(&mytmutex);
         myglobal++;
         pthread_mutex_unlock(&mytmutex);

@@ -1,21 +1,22 @@
-#include<stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include<unistd.h>
-#include<sys/wait.h>
-int main(){
-    int child=fork();
-    if (child!=0){
-        //printf("parrent view : child process pid =  %d.\n",child);
-    }else if(child==0){
+#include <sys/wait.h>
+#include <unistd.h>
+int main()
+{
+    int child = fork();
+    if (child != 0) {
+        // printf("parrent view : child process pid =  %d.\n",child);
+    } else if (child == 0) {
         printf("\nThe Next is ls's Content:\n");
-        execle("/bin/ls", "/bin/ls","-A",(char*)NULL);
+        execl("/bin/ls", "/bin/ls", "-A", (char*)NULL);
         exit(1);
-    }else{
+    } else {
         printf("fork failed\n");
     }
-    int i=-1;
+    int i = -1;
     printf("\nchild's pid = %d\n", child);
-    waitpid(child,&i,0);
-    printf("\nchild process exits %d.\n",i);
+    waitpid(child, &i, 0);
+    printf("\nchild process exits %d.\n", i);
     return 0;
 }

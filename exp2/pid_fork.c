@@ -1,29 +1,28 @@
-#include<unistd.h>
-#include<stdio.h>
-#include<string.h>
-int t=1;
-void say(char *words,int t){
-    for(int i=0;i<t;++i){
-        printf("output %s \n",words);
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+int t = 1;
+void say(char* words, int t)
+{
+    for (int i = 0; i < t; ++i) {
+        printf("output %s \n", words);
         usleep(1000000);
     }
 }
-
-int main(int argc,char **args){
-    int p1,p2;
-    p1=fork();
-    p2=fork();
-    say("a",t);
-    if (p1==0){
+int main(int argc, char** args)
+{
+    int p1, p2;
+    p1 = fork();
+    p2 = fork();
+    say("a", t);
+    if (p1 == 0) {
         say("b", t);
-    }else{
+    } else {
     }
-    if (p2==0){
+    if (p2 == 0) {
         say("c", t);
-    }else{
+    } else {
     }
-
     sleep(1);
     return 0;
 }
-

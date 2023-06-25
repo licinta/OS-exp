@@ -6,7 +6,6 @@
 #include "iostream"
 #include "list"
 #include <unistd.h>
-
 #define INVALID -1
 #define total_instruction 320
 #define total_vp 32
@@ -16,7 +15,10 @@ using namespace std;
 struct pl_type {
     // virtual page number , physics page number , usage counter , unused time
     int vpn = 0, ppn = -1, counter = 0, time = -1;
-    bool operator==(const pl_type& pother) const { return vpn == pother.vpn && ppn == pother.ppn && counter == pother.counter && time == pother.time; }
+    bool operator==(const pl_type& pother) const
+    {
+        return vpn == pother.vpn && ppn == pother.ppn && counter == pother.counter && time == pother.time;
+    }
 };
 
 pl_type pagelist[total_vp];
@@ -222,6 +224,7 @@ void CLOCK(int total_pp)
 
 int main()
 {
+    printf("asd");
     int S, i;
     srand(10 * getpid());
     /*由于每次运行时进程号不同,故可用来作为初始化随机数队列的“种子”*/
